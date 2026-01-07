@@ -1,18 +1,51 @@
 variable "app_name" {
-  type = string
+  description = "Name of the application"
+  type        = string
 }
 
 variable "image" {
-  type = string
+  description = "Docker image to deploy"
+  type        = string
 }
 
 variable "replicas" {
-  type    = number
-  default = 1
+  description = "Number of replicas"
+  type        = number
+  default     = 1
 }
 
 variable "database_url" {
-  type = string
-  # Default to a dummy value if no DB is ready yet
-  default = "postgresql://user:pass@localhost:5432/db" 
+  description = "Database connection URL"
+  type        = string
+  sensitive   = true
+}
+
+variable "openai_api_key" {
+  description = "OpenAI API Key"
+  type        = string
+  sensitive   = true
+}
+
+variable "langsmith_api_key" {
+  description = "LangSmith API Key"
+  type        = string
+  sensitive   = true
+}
+
+variable "hcaptcha_secret_key" {
+  description = "hCaptcha Secret Key"
+  type        = string
+  sensitive   = true
+}
+
+variable "model_name" {
+  description = "LLM Model Name"
+  type        = string
+  default     = "gpt-4o-mini" 
+}
+
+variable "embedding_model_name" {
+  description = "Embedding Model Name"
+  type        = string
+  default     = "text-embedding-3-small"
 }

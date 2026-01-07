@@ -1,5 +1,5 @@
 import logging
-from sqlalchemy import Column, Integer, String, JSON, DateTime, func, select
+from sqlalchemy import Column, Integer, String, JSON, DateTime, func, select, text
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 
@@ -31,6 +31,8 @@ async def init_db():
     Creates the tables asynchronously.
     """
     async with async_engine.begin() as conn:
+        # Enable pgvector extension
+        await conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector;"))
         # await conn.run_sync(Base.metadata.drop_all)
         await conn.run_sync(Base.metadata.create_all)
     logger.info("Database and tables checked/created.")
