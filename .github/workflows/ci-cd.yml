@@ -2,9 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 env:
   AWS_REGION: us-east-1
@@ -47,7 +47,7 @@ jobs:
       - name: Run Snyk to check for vulnerabilities
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        run: snyk test --file=chatbot/requirements.txt --severity-threshold=high
+        run: snyk test --file=requirements.txt --severity-threshold=high
 
   build-and-push:
     needs: security-scan
@@ -72,7 +72,7 @@ jobs:
       - name: Build, tag, and push image to Amazon ECR
         uses: docker/build-push-action@v5
         with:
-          context: ./chatbot
+          context: .
           push: true
           tags: ${{ steps.login-ecr.outputs.registry }}/production-chatbot:${{ github.sha }}
           cache-from: type=gha
@@ -93,7 +93,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./chatbot/terraform/environments/production
+        working-directory: ./terraform/environments/production
     
     steps:
       - name: Checkout code
@@ -131,7 +131,7 @@ jobs:
     environment: production # Requires approval
     defaults:
       run:
-        working-directory: ./chatbot/terraform/environments/production
+        working-directory: ./terraform/environments/production
 
     steps:
       - name: Checkout code
