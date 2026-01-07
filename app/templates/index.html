@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat con migo</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <!-- Markdown parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- hCaptcha Script -->
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+
+  <div class="chat-container">
+    <div class="chat-header">
+      <span>🤖 Mi Asistente </span>
+      <div class="tech-logos">
+        <img src="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/files/python-logo-only.svg" alt="Python" />
+        <img src="https://fastapi.tiangolo.com/img/favicon.png" alt="FastAPI" />
+        <img src="/static/img/langchain.png" alt="LangChain" />
+        <img src="/static/img/openai.png" alt="OpenAI" />
+        <img src="https://www.postgresql.org/media/img/about/press/elephant.png" alt="PostgreSQL" />
+      </div>
+    </div>
+
+    <div class="chat-box" id="chat-box">
+      <div class="message ai-message">
+        👋 Hola, soy el asistente de Joaquin. Aquí tienes algunas preguntas frecuentes:
+        <div class="suggestions">
+          <button class="suggestion-btn">¿Podés contarme sobre tu experiencia laboral?</button>
+          <button class="suggestion-btn">¿Cuáles son tus principales habilidades técnicas?</button>
+          <button class="suggestion-btn">¿Qué tipo de roles estás buscando actualmente?</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-input-area">      
+      <div class="input-row">
+        <input type="text" id="user-input" placeholder="Por favor, resuelve el CAPTCHA para empezar..." autofocus disabled />
+        <button id="send-btn" disabled>➤</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPTCHA Modal -->
+  <div id="captcha-overlay" class="modal-overlay" style="display:flex;">
+    <div class="modal-content">
+        <h3>Verificación Requerida</h3>
+        <p>Para proteger nuestro servicio, por favor completa el siguiente paso.</p>
+        <div class="h-captcha" 
+             data-sitekey="a808b418-e3ee-4964-91d8-2f9e26802b1a" 
+             data-callback="onCaptchaSuccess"></div>
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

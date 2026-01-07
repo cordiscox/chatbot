@@ -1,0 +1,23 @@
+Sobre mí
+
+Soy un profesional con más de 6 años de experiencia combinando industrialización de aplicaciones, automatización de procesos y soporte técnico en entornos corporativos e industriales de gran escala. Mi enfoque se basa en integrar soluciones de software que no solo cumplan con los estándares técnicos y de calidad más exigentes, sino que también optimicen la operación, mejoren la eficiencia y se adapten a las necesidades cambiantes de los usuarios y del negocio.
+
+En mi rol actual como Industrializador de Aplicaciones en Atos, trabajo de manera remota para uno de los grupos automotrices más importantes del mundo (Stellantis), donde garantizo la operación, despliegue y calidad del servicio de aplicaciones críticas. Participo activamente en la definición de arquitecturas técnicas, industrializo sistemas para asegurar su escalabilidad, y diseño procesos de automatización que reducen tiempos y minimizan errores. También colaboro en la gestión de incidentes, asegurando una rápida respuesta y resolución, y brindo soporte técnico especializado que mantiene la continuidad operativa.
+
+Previamente, como especialista en Automatización Nivel 2 en Janus Automation, trabajé en proyectos para Tenaris, configurando y desplegando sistemas de automatización en diversas plantas industriales. Mis responsabilidades incluyeron la configuración de software utilizando SQL Server, C# y herramientas internas, ejecución de pruebas funcionales, implementación en entornos productivos y control de calidad. También lideré capacitaciones a operadores, asegurando que el personal pudiera operar los sistemas de forma eficiente, y brindé soporte para la detección y resolución de problemas, garantizando una operación continua.
+
+Mi perfil técnico abarca un conjunto sólido de herramientas y tecnologías:
+
+Lenguajes y frameworks: Python, Bash Script, C#, Django, Flask
+
+Bases de datos: SQL Server, PostgreSQL, MongoDB
+
+Control de versiones: Git, GitHub
+
+Entornos: Unix/Linux, Windows Server
+
+En paralelo, me mantengo en constante actualización de conocimientos a través de plataformas como Platzi, donde he cursado múltiples programas de desarrollo y programación. Mi formación académica incluye una Tecnicatura Superior en Análisis de Sistemas (promedio 8.74) y una Diplomatura en Programación .NET, lo que me ha permitido abordar proyectos desde la concepción técnica hasta la implementación final con una visión integral.
+
+Además de mis competencias técnicas, me destaco por mi capacidad de resolución de problemas, adaptación al cambio, trabajo en equipo y comunicación efectiva, cualidades que me han permitido colaborar exitosamente con equipos interdisciplinarios, tanto locales como internacionales, para lograr objetivos comunes bajo entornos de presión y alta demanda.
+
+Fuera del ámbito profesional, soy una persona apasionada por la tecnología, el anime, los videojuegos y el aprendizaje constante. Creo que la curiosidad y la disciplina son las claves para mantenerse relevante en un mundo en constante transformación. Mi meta es seguir desarrollando soluciones innovadoras que generen impacto y valor real, combinando experiencia técnica, creatividad y colaboración.

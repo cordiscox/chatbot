@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+    container_name: chatbot_app
+    ports:
+      - "8080:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - LANGSMITH_API_KEY=${LANGSMITH_API_KEY}
+      - LANGSMITH_TRACING=true
+      - POSTGRES_DB_URL=${POSTGRES_DB_URL}
+      - HCAPTCHA_SECRET_KEY=${HCAPTCHA_SECRET_KEY}
+      - MODEL=${MODEL}
+      - EMBEDDING_MODEL_NAME=${EMBEDDING_MODEL_NAME}
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "https://chatbot.tusolucionautomatica.com/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+
