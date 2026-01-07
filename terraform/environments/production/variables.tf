@@ -15,3 +15,21 @@ variable "image_tag" {
   type        = string
   default     = "latest"
 }
+
+variable "openai_api_key" {
+  description = "OpenAI API Key"
+  type        = string
+  sensitive   = true
+}
+
+variable "langsmith_api_key" {
+  description = "LangSmith API Key"
+  type        = string
+  sensitive   = true
+}
+
+variable "hcaptcha_secret_key" {
+  description = "hCaptcha Secret Key"
+  type        = string
+  sensitive   = true
+}

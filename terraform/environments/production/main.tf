@@ -9,6 +9,14 @@ terraform {
       version = "~> 2.0"
     }
   }
+
+  backend "s3" {
+    bucket         = "cordiscox-langchain-tfstate"
+    key            = "global/s3/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "cordiscox-langchain-tflocks"
+    encrypt        = true
+  }
 }
 
 provider "aws" {
@@ -28,6 +36,7 @@ module "networking" {
 module "ecr" {
   source          = "../../modules/ecr"
   environment     = var.environment
+  repository_name = "production-chatbot"
 }
 
 module "eks" {
@@ -39,7 +48,14 @@ module "eks" {
   node_min_size     = 1
 }
 
-/*
+module "rds" {
+  source                = "../../modules/rds"
+  environment           = var.environment
+  vpc_id                = module.networking.vpc_id
+  private_subnet_ids    = module.networking.private_subnet_ids
+  eks_security_group_id = module.eks.cluster_security_group_id
+}
+
 # Configure Kubernetes provider to use the EKS cluster
 data "aws_eks_cluster" "cluster" {
   name = module.eks.cluster_name
@@ -56,15 +72,20 @@ provider "kubernetes" {
 }
 
 module "k8s_app" {
-  source       = "../../modules/k8s-app"
-  app_name     = "chatbot"
-  image        = "${module.ecr.repository_url}:${var.image_tag}"
-  replicas     = 2
-  database_url = "postgresql://user:pass@db-host:5432/db" # Update with real RDS endpoint later
+  source              = "../../modules/k8s-app"
+  app_name            = "chatbot"
+  image               = "${module.ecr.repository_url}:${var.image_tag}"
+  replicas            = 2
   
-  depends_on = [module.eks]
+  # Construct DB URL from RDS module outputs
+  database_url        = "postgresql://${module.rds.db_username}:${module.rds.db_password}@${module.rds.db_host}:${module.rds.db_port}/${module.rds.db_name}"
+  
+  openai_api_key      = var.openai_api_key
+  langsmith_api_key   = var.langsmith_api_key
+  hcaptcha_secret_key = var.hcaptcha_secret_key
+  
+  depends_on = [module.eks, module.rds]
 }
-*/
 
 module "github_oidc" {
   source      = "../../modules/github_oidc"
